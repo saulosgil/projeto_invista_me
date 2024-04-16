@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'invista_me',
-    'widget_tweaks'
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'widget_tweaks',
+    'usuarios'
 ]
 
 MIDDLEWARE = [

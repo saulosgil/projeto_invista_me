@@ -22,7 +22,9 @@
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" href="{% url 'investimentos' %}">Invista-me</a>
     </nav>
-    {% block conteudo %} {% endblock %}
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">{{message}}</div>
+    {% endfor %} {% endif %} {% block conteudo %} {% endblock %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
