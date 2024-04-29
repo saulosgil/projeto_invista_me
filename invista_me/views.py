@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .models import Investimento
 from .forms import InvestimentoForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -18,8 +19,7 @@ def detalhe(request, id_investimento):
   }
   return render(request, 'investimentos/detalhe.html', dados)
 
-
-
+@login_required
 def criar(request):
   if request.method == 'POST':
     investimento_form = InvestimentoForm(request.POST)
@@ -33,8 +33,7 @@ def criar(request):
     }
   return render(request, 'investimentos/novo_investimento.html', context=formulario)
 
-
-
+@login_required
 def editar(request, id_investimento):
   investimento = Investimento.objects.get(pk=id_investimento)
   # novo investimento/1 -> GET
@@ -48,8 +47,7 @@ def editar(request, id_investimento):
       formulario.save()
     return redirect('investimentos')
 
-
-
+@login_required
 def excluir(request, id_investimento):
   investimento = Investimento.objects.get(pk=id_investimento)
   if request.method == 'POST':
